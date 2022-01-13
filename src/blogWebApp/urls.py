@@ -13,8 +13,8 @@ from posts.views import (
 
 urlpatterns = [
     path('', posts_list_view),
-    path('blog-new/', posts_create_view),
-    path('blog/', include('posts.urls')),
+    path('posts-new/', posts_create_view),
+    path('posts/', include('posts.urls')),
     path("register/", register_request, name="register"),
     path("login/", login_request, name="login"),
     path("logout/", logout_request, name= "logout"),

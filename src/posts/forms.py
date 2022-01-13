@@ -13,7 +13,6 @@ class BlogPostModelForm(forms.ModelForm):
         qs = BlogPost.objects.filter(title__iexact=title)
         if instance is not None:
             qs = qs.exclude(pk=instance.pk)
-        # add error message
         if qs.exists():
             raise forms.ValidationError("This title has already been used. Please try again.")
         return title
