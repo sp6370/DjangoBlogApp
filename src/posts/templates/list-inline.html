@@ -1,0 +1,37 @@
+<div class='col-12 col-md-10 mb-3 mx-auto'>
+    {% if blog_post.status == "D" %}
+    <div class='card border border-warning text-dark'>
+        <div class='card-body'>
+            <h5 class='card-title'>{{ blog_post.title }}</h5>
+            <p class='card-text'>
+                <small class='text-muted'>{{ blog_post.timestamp }}</small>
+                {% if truncate %}
+                    {{ blog_post.content|linebreaks|truncatewords:30 }}
+                {% else %}
+                    {{ blog_post.content|linebreaks }}
+                {% endif %}
+            </p>
+            <a href="{{ blog_post.get_absolute_url }}">View</a><br/>
+            Draft <a href="{{ blog_post.get_edit_url }}">Update</a>
+        </div>
+    </div>  
+    {% else %}
+    <div class='card'>
+       <div class='card-body'>
+           <h5 class='card-title'>{{ blog_post.title }}</h5>
+           <p class='card-text'>
+               <small class='text-muted'>{{ blog_post.timestamp }}</small>
+               {% if truncate %}
+                   {{ blog_post.content|linebreaks|truncatewords:30 }}
+               {% else %}
+                   {{ blog_post.content|linebreaks }}
+               {% endif %}
+           </p>
+   
+           {% if not detail %}
+               <a href="{{ blog_post.get_absolute_url }}">View</a>
+           {% endif %}
+       </div>
+    </div>
+{% endif %}
+</div>

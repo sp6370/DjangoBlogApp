@@ -2,8 +2,9 @@ from django.conf import settings
 from django.db import models
 from django.utils.text import slugify
 
-
 User = settings.AUTH_USER_MODEL
+
+
 
 class BlogPost(models.Model): 
     POST_STATUS = (('D', 'Draft'),('P', 'Publised'))
@@ -14,6 +15,8 @@ class BlogPost(models.Model):
     timestamp = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=1, choices=POST_STATUS, blank=False)
 
+    
+    
     class Meta:
         ordering = ['-timestamp']
 
